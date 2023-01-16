@@ -2,39 +2,50 @@ from draw import draw_figure
 
 
 def bresenham_line_draw(x1=300, y1=200, x2=400, y2=400):
-    # x1 = int(input("Enter X1: "))
-    # y1 = int(input("Enter Y1: "))
-    # x2 = int(input("Enter X2: "))
-    # y2 = int(input("Enter Y2: "))
-
+    # step 2 calculate difference
     dx = abs(x2 - x1)
     dy = abs(y2 - y1)
-    slope = dy / float(dx)
+    m = dy / dx
 
-    x, y = x1, y1
+    # step 3 perform test to check if pk < 0
+    flag = True
 
-    # checking the slope if slope > 1 then interchange the role of x and y
-    if slope > 1:
-        dx, dy = dy, dx
-        x, y = y, x
-        x1, y1 = y1, x1
-        x2, y2 = y2, x2
+    points = [(x1, y1)]
 
-    # initialization of the initial decision parameter
-    p = 2 * dy - dx
+    step = 1
+    if x1 > x2 or y1 > y2:
+        step = -1
 
-    points = []
-    for k in range(2, dx):
-        if p > 0:
-            y = y + 1 if y < y2 else y - 1
-            p = p + 2 * (dy - dx)
+    mm = False
+    if m < 1:
+        x1, x2, y1, y2 = y1, y2, x1, x2
+        dx = abs(x2 - x1)
+        dy = abs(y2 - y1)
+        mm = True
+
+    p0 = 2 * dx - dy
+    x = x1
+    y = y1
+
+    for i in range(abs(y2 - y1)):
+        if flag:
+            x_previous = x1
+            p_previous = p0
+            p = p0
+            flag = False
         else:
-            p = p + 2 * dy
-        x = x + 1 if x < x2 else x - 1
+            x_previous = x
+            p_previous = p
 
-        # delay for 0.01 secs
-        # time.sleep(0.01)
-        print(x, y)
-        points.append((x, y))
+        if p >= 0:
+            x = x + step
+
+        p = p_previous + 2 * dx - 2 * dy * (abs(x - x_previous))
+        y = y + 1
+
+        if mm:
+            points.append((y, x))
+        else:
+            points.append((x, y))
 
     draw_figure(points)
