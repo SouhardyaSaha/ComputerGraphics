@@ -1,16 +1,11 @@
 from draw import draw_figure
 
 
-def bresenham_line_draw():
+def bresenham_line_draw(x1=300, y1=200, x2=400, y2=400):
     # x1 = int(input("Enter X1: "))
     # y1 = int(input("Enter Y1: "))
     # x2 = int(input("Enter X2: "))
     # y2 = int(input("Enter Y2: "))
-
-    x1 = 20
-    y1 = 20
-    x2 = 400
-    y2 = 400
 
     dx = abs(x2 - x1)
     dy = abs(y2 - y1)

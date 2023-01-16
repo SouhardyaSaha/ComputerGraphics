@@ -5,7 +5,7 @@ from pygame.locals import *
 
 pygame.init()
 
-screen_width, screen_height = 600, 600
+screen_width, screen_height = 800, 800
 
 screen_surface = pygame.display.set_mode((screen_width, screen_height), 0, 32)
 pygame.display.set_caption("DDA Line Drawing Algorithm")
