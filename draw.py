@@ -8,7 +8,7 @@ pygame.init()
 screen_width, screen_height = 800, 800
 
 screen_surface = pygame.display.set_mode((screen_width, screen_height), 0, 32)
-pygame.display.set_caption("DDA Line Drawing Algorithm")
+pygame.display.set_caption("Computer Graphics Drawing Algorithm")
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
